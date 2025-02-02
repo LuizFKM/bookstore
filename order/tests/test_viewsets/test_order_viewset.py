@@ -18,7 +18,7 @@ class TestOrderViewSet(APITestCase):
 
     def test_order(self):
         response = self.client.get(
-            reverse('orderlist', kwargs={'version': 'v1'})
+            reverse('order-list', kwargs={'version': 'v1'})
         )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -27,7 +27,7 @@ class TestOrderViewSet(APITestCase):
         self.assertEqual(order_data['product'][0]['title'], self.product.title)
         self.assertEqual(order_data['product'][0]['price'], self.product.price)
         self.assertEqual(order_data['product'][0]['active'], self.product.active)
-        self.assertEqual(order_data['product'][0]['category'][0]['title'], self.category.title)
+        self.assertEqual(order_data['product'][0]['categories'][0]['title'], self.category.title)
 
     def test_create_order(self):
         user = UserFactory()
@@ -40,7 +40,7 @@ class TestOrderViewSet(APITestCase):
         response = self.client.post(
             reverse('order-list', kwargs={'version': 'v1'}),
             data=data,
-            content_type = 'application/json'
+            content_type='application/json'
         )
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
