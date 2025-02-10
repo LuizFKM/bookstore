@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.12]
+        python-version: [3.13]
 
     runs-on: ubuntu-latest
 
@@ -16,7 +16,7 @@ jobs:
       db:
         image: postgres:17
         ports:
-          - 5432:5432
+          - 5434:5432
         env:
           POSTGRES_USER: dev
           POSTGRES_PASSWORD: dev
