@@ -7,20 +7,20 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.12]
+        python-version: [3.13]
 
     runs-on: ubuntu-latest
 
     services:
 
       db:
-        image: postgres:13
+        image: postgres:17
         ports:
           - 5434:5432
         env:
-          POSTGRES_USER: bookstore_dev
-          POSTGRES_PASSWORD: bookstore_dev
-          POSTGRES_DB: bookstore_dev_db
+          POSTGRES_USER: dev
+          POSTGRES_PASSWORD: dev
+          POSTGRES_DB: bookstore_db
 
     steps:
       - uses: actions/checkout@v2
