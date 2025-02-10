@@ -29,6 +29,8 @@ jobs:
 
       - name: Test
         run: |
+          export DJANGO_ALLOWED_HOSTS="localhost 127.0.0.1" # Setting the variable here
+          export DEBUG=0 # Setting the variable here
           poetry run python manage.py test
       - name: Wemake Python Stylguide
         uses: wemake-services/wemake-python-styleguide@0.16.0
