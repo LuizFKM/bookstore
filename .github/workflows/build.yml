@@ -16,7 +16,7 @@ jobs:
       db:
         image: postgres:17
         ports:
-          - 5434:5432
+          - 5433:5432
         env:
           POSTGRES_USER: dev
           POSTGRES_PASSWORD: dev
