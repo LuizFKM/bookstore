@@ -1,5 +1,5 @@
 # `python-base` sets up all our shared environment variables
-FROM python:3.13-slim as python-base
+FROM python:3.12-slim as python-base
 
     # python
 ENV PYTHONUNBUFFERED=1 \
@@ -36,14 +36,16 @@ RUN apt-get update \
         # deps for installing poetry
         curl \
         # deps for building python deps
-        build-essential
+        build-essential \
+    && rm -rf /var/lib/apt/lists/*
 
 # install poetry - respects $POETRY_VERSION & $POETRY_HOME
 RUN curl -sSL https://install.python-poetry.org | python3
 
 RUN apt-get update \
     && apt-get -y install libpq-dev gcc \
-    && pip install psycopg2
+    && rm -rf /var/lib/apt/lists/* \
+    && pip install --no-cache-dir psycopg2
 
 # copy project requirement files here to ensure they will be cached.
 WORKDIR $PYSETUP_PATH

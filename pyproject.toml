@@ -6,7 +6,7 @@ authors = ["Luiz Francisco <luizfk.marinho@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.13"
+python = ">=3.12,<3.14"
 django = ">=5.1.5,<6.0.0"
 djangorestframework = ">=3.15.2,<4.0.0"
 "django-rest-framework" = ">=0.1.0,<0.2.0"
@@ -16,6 +16,7 @@ faker = ">=35.2.0,<36.0.0"
 "django-debug-toolbar" = ">=5.0.1,<6.0.0"
 psycopg2-binary = "^2.9.10"
 flake8 = "^7.1.1"
+gitpython = "^3.1.44"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"
